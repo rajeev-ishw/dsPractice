@@ -1,0 +1,40 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.*;
+
+class Max_Heapify_Demo {
+	public static void main (String[] args) {
+		int heap[] = {1,8,5,6,7};
+		System.out.println(Arrays.toString(heap));
+		max_heapify(heap,0);
+		System.out.println("GfG!"+ Arrays.toString(heap));
+		
+	}
+	public static void max_heapify(int heap[], int i){
+	    
+	    int lc= 2*i+1;
+	    int rc = 2*i+1;
+	    int mx =i;
+	    
+	    if((lc < heap.length-1) && (heap[lc] > heap[mx])){
+	        mx=lc;
+	    }
+	    if(rc < heap.length-1 && heap[rc] > heap[mx]){
+	        mx=rc;
+	    }
+	    if(mx == i) //base condition
+	        return;
+	        
+	   else{
+	       swap(mx, i, heap);
+	       max_heapify(heap,mx);
+	   }
+	}
+	
+	public static void swap(int mx, int i, int[] heap){
+	    int temp =heap[mx];
+	    heap[mx]= heap[i];
+	    heap[i] = temp;
+	}
+}
